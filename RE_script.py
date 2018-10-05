@@ -80,7 +80,7 @@ def Geocode(df):
 
                 # writing geocoded record into a database
                 cur=con.cursor()
-                table_name='yr{}'.format(year)
+                table_name='yr_{}'.format(year)
                 cur.execute('''CREATE TABLE IF NOT EXISTS %s (sale_id INTEGER PRIMARY KEY, bbl_id INTEGER, 
                 year TEXT, borough INTEGER,nbhd TEXT, bldg_ctgy TEXT,
                 tax_cls_p TEXT, block TEXT,lot TEXT,easmnt TEXT, bldg_cls_p TEXT,address TEXT,
