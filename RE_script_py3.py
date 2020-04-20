@@ -160,7 +160,7 @@ sales=sales.loc[:, cols_order]
 # separate address into individual parts (needed for geocoding parameters)
 sales[['street_number', 'street_name']]=sales.apply(lambda row: pd.Series(parse_address(row['address'])), axis=1)
 
-create database
+#create database
 con=lite.connect('RE_Sales_beta.sqlite')
 cur=con.cursor()
 table_name='yr_{}'.format(year)
@@ -171,5 +171,5 @@ apt TEXT, zip TEXT, res_unit INTEGER,com_unit INTEGER, tot_unit INTEGER, land_sq
 tot_sqft INTEGER, yr_built INTEGER, tax_cls_s TEXT, bldg_cls_s TEXT,sale_date TEXT, price INTEGER,
 usable TEXT, long REAL, lat REAL, georesult TEXT, message TEXT)'''% table_name)
 
- this line runs the Geocode function
+#this line runs the Geocode function
 Geocode(sales)
