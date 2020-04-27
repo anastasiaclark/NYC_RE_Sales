@@ -4,6 +4,4 @@ This repository includes a collection of scripts used to generate layers for the
 
 https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Geocoded+Real+Estate+Sales
 
-The original script (RE_script_py2) was written in python 2 as the city's geocoding module nyc-geoclient was written in that version. A new script (RE_script_py3) was written in python 3 to utilize the city's newer python-geoclient. Because the new geoclient uses different procedures for handling non-matching records (an error is returned instead of an empty record), the geocoding function in the latest script had to be completely revised. 
-
-Please note that the new script is still being tested, and the source data represents just a subset of sales with some intentional errors introduced for testing.
+The original script (RE_script_py2) was written in python 2 as the city's geocoding module nyc-geoclient was written in that version. A new version (RE_script_py3) was written in python 3 to utilize the city's newer python-geoclient. Because the new geoclient uses different procedures for handling non-matching records (an error is returned instead of an empty record), the geocoding function in the latest script had to be completely revised. 
