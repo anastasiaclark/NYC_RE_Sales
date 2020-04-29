@@ -138,16 +138,20 @@ sales.rename(columns={sales.filter(regex='BUILDING CLASS AS OF FINAL ROLL*').col
 text_cols=[c for c in sales.columns if sales[c].dtype=='object']
 for c in text_cols:
     sales[c]=sales[c].apply(lambda x: clean_strings(x))
-# prevents writing 'nan' string to database
+    
+# prevents writing 'nan' string to database for these fields
+# as it creates data type problems in the databases
 sales['apt'].replace('nan','',inplace=True)    
+sales['tax_cls_p'].replace('nan','',inplace=True)    
+sales['bldg_cls_p'].replace('nan','',inplace=True)    
 
 # add some columns    
 sales['bbl_id']=sales['borough'].astype(str)+sales['block'].astype(str)+sales['lot'].astype(str)
 sales['usable']=np.where(sales['price']>10,'True','False')
 sales['year']='{}'.format(year)
+
 # SQLite doesn't support pandas datetime format, change dates to text
 sales['sale_date']=sales['sale_date'].astype(str)
-
 
 # re-arrange the order of the columns to be same as in the past
 cols_order=['bbl_id', 'year', 'borough', 'nbhd', 'bldg_ctgy', 'tax_cls_p', 'block', 'lot',
